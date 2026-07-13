@@ -1,0 +1,28 @@
+---
+import type { RepoCategory } from "../data/repos";
+import RepoCard from "./RepoCard.astro";
+
+interface Props {
+	category: RepoCategory;
+}
+
+const { category } = Astro.props;
+---
+
+<section id={category.id} class="scroll-mt-28">
+	<div class="mb-6">
+		<div class="mb-2 flex items-center gap-3">
+			<span class="text-2xl" aria-hidden="true">{category.emoji}</span>
+			<h2 class="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+				{category.title}
+			</h2>
+		</div>
+		<p class="max-w-2xl text-base leading-relaxed text-secondary">
+			{category.description}
+		</p>
+	</div>
+
+	<div class="grid gap-3 sm:grid-cols-2">
+		{category.repos.map((repo) => <RepoCard repo={repo} />)}
+	</div>
+</section>

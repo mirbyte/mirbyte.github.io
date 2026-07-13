@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: "Syne", system-ui, sans-serif;
+	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
+	--color-canvas: #0c0c0f;
+	--color-surface: #18181f;
+	--color-surface-raised: #22222c;
+	--color-ink: #f4f2ed;
+	--color-secondary: #d4d1dc;
+	--color-muted: #a09aab;
+	--color-accent: #4db8ff;
+	--color-accent-hover: #7ccaff;
+	--color-line: #34343f;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-canvas font-sans text-ink antialiased;
+	}
+
+	::selection {
+		@apply bg-accent/25 text-ink;
+	}
+}
+
+@layer utilities {
+	.page-bg {
+		background-color: var(--color-canvas);
+		background-image:
+			radial-gradient(ellipse 80% 60% at 50% 0%, rgb(77 184 255 / 0.14), transparent 60%),
+			radial-gradient(ellipse 50% 40% at 80% 60%, rgb(77 184 255 / 0.08), transparent 50%),
+			radial-gradient(ellipse 40% 30% at 10% 80%, rgb(77 184 255 / 0.06), transparent 50%);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.page-bg {
+			animation: page-drift 20s ease-in-out infinite alternate;
+		}
+	}
+
+	@keyframes page-drift {
+		0% {
+			background-position: 0% 0%, 100% 100%, 0% 100%;
+		}
+		100% {
+			background-position: 10% 5%, 90% 95%, 5% 90%;
+		}
+	}
+
+	.label-line::before {
+		content: "";
+		display: inline-block;
+		width: 2rem;
+		height: 1px;
+		background: var(--color-line);
+		vertical-align: middle;
+		margin-right: 0.75rem;
+	}
+}

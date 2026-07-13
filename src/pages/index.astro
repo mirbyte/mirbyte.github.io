@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import CategorySection from "../components/CategorySection.astro";
+import { repoCategories } from "../data/repos";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.name} description={site.tagline}>
+	<Header />
+	<main>
+		<Hero />
+
+		<section id="software" class="relative">
+			<div class="mx-auto max-w-6xl scroll-mt-24 px-6 py-16 pb-24">
+				<div class="mb-14">
+					<p class="label-line text-sm font-medium text-muted">
+						Curated list
+					</p>
+					<h2 class="mt-6 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+						Software by category
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-secondary">
+						Not everything on my GitHub profile is here — just the repos worth finding.
+						Pick a category below or scroll through the list.
+					</p>
+
+					<nav class="mt-8 flex flex-wrap gap-2" aria-label="Categories">
+						{repoCategories.map((category) => (
+							<a
+								href={`#${category.id}`}
+								class="inline-flex items-center gap-2 border border-line bg-surface-raised px-4 py-2.5 text-sm font-medium text-secondary transition hover:border-accent/40 hover:text-accent"
+							>
+								<span aria-hidden="true">{category.emoji}</span>
+								{category.title}
+							</a>
+						))}
+					</nav>
+				</div>
+
+				<div class="space-y-16">
+					{repoCategories.map((category) => <CategorySection category={category} />)}
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</BaseLayout>
