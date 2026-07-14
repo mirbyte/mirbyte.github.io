@@ -1,28 +1,43 @@
 ---
-import type { RepoCategory } from "../data/repos";
+import { categoryAccents, type RepoCategory } from "../data/repos";
 import RepoCard from "./RepoCard.astro";
 
 interface Props {
 	category: RepoCategory;
+	index: number;
 }
 
-const { category } = Astro.props;
+const { category, index } = Astro.props;
+const accent = categoryAccents[category.id] ?? "#4db8ff";
+const categoryNumber = String(index + 1).padStart(2, "0");
 ---
 
-<section id={category.id} class="scroll-mt-28">
-	<div class="mb-6">
-		<div class="mb-2 flex items-center gap-3">
-			<span class="text-2xl" aria-hidden="true">{category.emoji}</span>
+<section
+	id={category.id}
+	class="category-section scroll-mt-28"
+	style={`--category-accent: ${accent}`}
+>
+	<div class="category-section-header relative mb-6 pl-8">
+		<span class="category-watermark pointer-events-none absolute -left-2 top-1/2 -translate-y-1/2 select-none font-mono text-[clamp(4rem,14vw,7rem)] font-bold leading-none tabular-nums" aria-hidden="true">
+			{categoryNumber}
+		</span>
+
+		<span class="category-node pointer-events-none absolute left-0 top-8 h-2 w-2 -translate-x-1/2 rounded-full" aria-hidden="true"></span>
+		<span class="category-rail pointer-events-none absolute bottom-0 left-0 top-16 w-px -translate-x-1/2" aria-hidden="true"></span>
+
+		<div class="relative mb-2 flex items-center gap-3">
 			<h2 class="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
 				{category.title}
 			</h2>
 		</div>
-		<p class="max-w-2xl text-base leading-relaxed text-secondary">
+		<p class="relative max-w-2xl text-base leading-relaxed text-secondary">
 			{category.description}
 		</p>
 	</div>
 
 	<div class="grid gap-3 sm:grid-cols-2">
-		{category.repos.map((repo) => <RepoCard repo={repo} />)}
+		{category.repos.map((repo, repoIndex) => (
+			<RepoCard repo={repo} index={repoIndex} accent={accent} />
+		))}
 	</div>
 </section>

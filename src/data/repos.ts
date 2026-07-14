@@ -10,7 +10,6 @@ export type RepoCategory = {
 	id: string;
 	title: string;
 	description: string;
-	emoji: string;
 	repos: Repo[];
 };
 
@@ -23,16 +22,7 @@ export const repoCategories: RepoCategory[] = [
 		id: "windows",
 		title: "Windows tools",
 		description: "Desktop utilities, tray apps, context menus, and system helpers.",
-		emoji: "🪟",
 		repos: [
-			{
-				name: "minimalfirewall",
-				description:
-					"Lightweight Windows Firewall frontend with lockdown mode, connection alerts, and rule auditing.",
-				url: "https://github.com/mirbyte/minimalfirewall",
-				language: "C#",
-				topics: ["windows", "security"],
-			},
 			{
 				name: "IconPull",
 				description:
@@ -131,7 +121,6 @@ export const repoCategories: RepoCategory[] = [
 		id: "scripts",
 		title: "Scripts & automation",
 		description: "Python scripts, portable app updaters, and file utilities.",
-		emoji: "⚙️",
 		repos: [
 			{
 				name: "Simple-File-Management-Scripts",
@@ -175,20 +164,12 @@ export const repoCategories: RepoCategory[] = [
 				language: "Python",
 				topics: ["portable", "windows"],
 			},
-			{
-				name: "LP-Adlist-Configurator",
-				description: "Configure Lucky Patcher ad block lists using AdGuard filters.",
-				url: "https://github.com/mirbyte/LP-Adlist-Configurator",
-				language: "Python",
-				topics: ["android"],
-			},
 		],
 	},
 	{
 		id: "web",
 		title: "Websites",
 		description: "Sites and web-facing projects.",
-		emoji: "🌐",
 		repos: [
 			{
 				name: "mirbyte.github.io",
@@ -210,7 +191,6 @@ export const repoCategories: RepoCategory[] = [
 		id: "audio",
 		title: "Audio",
 		description: "Music and loudness tools.",
-		emoji: "🎚️",
 		repos: [
 			{
 				name: "DropGain",
@@ -225,7 +205,6 @@ export const repoCategories: RepoCategory[] = [
 		id: "trading",
 		title: "Trading",
 		description: "Indicators and bots for TradingView and cTrader.",
-		emoji: "📈",
 		repos: [
 			{
 				name: "TradingView-Indicators",
@@ -260,7 +239,6 @@ export const repoCategories: RepoCategory[] = [
 		id: "browser",
 		title: "Browser",
 		description: "Userscripts and browser-related tweaks.",
-		emoji: "🧩",
 		repos: [
 			{
 				name: "TwitchTV-Userscripts",
@@ -272,3 +250,12 @@ export const repoCategories: RepoCategory[] = [
 		],
 	},
 ];
+
+export const categoryAccents: Record<string, string> = {
+	windows: "#4db8ff",
+	scripts: "#a78bfa",
+	web: "#34d399",
+	audio: "#f472b6",
+	trading: "#fbbf24",
+	browser: "#fb923c",
+};

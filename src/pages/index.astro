@@ -4,17 +4,29 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import CategorySection from "../components/CategorySection.astro";
+import ScrollFx from "../components/ScrollFx.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
 import { repoCategories } from "../data/repos";
 import { site } from "../data/site";
 ---
 
 <BaseLayout title={site.name} description={site.tagline}>
+	<div
+		id="catalog-glows"
+		class="catalog-glows pointer-events-none fixed inset-0 z-0"
+		aria-hidden="true"
+	></div>
 	<Header />
-	<main>
+	<main class="relative z-10">
 		<Hero />
 
-		<section id="software" class="relative">
-			<div class="mx-auto max-w-6xl scroll-mt-24 px-6 py-16 pb-24">
+		<section id="software" class="software-section relative overflow-hidden">
+			<div
+				id="catalog-grid"
+				class="catalog-grid tech-grid tech-grid-soft pointer-events-none absolute inset-0"
+				aria-hidden="true"
+			></div>
+			<div class="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-16 pb-24">
 				<div class="mb-14">
 					<p class="label-line text-sm font-medium text-muted">
 						Curated list
@@ -31,20 +43,23 @@ import { site } from "../data/site";
 						{repoCategories.map((category) => (
 							<a
 								href={`#${category.id}`}
-								class="inline-flex items-center gap-2 border border-line bg-surface-raised px-4 py-2.5 text-sm font-medium text-secondary transition hover:border-accent/40 hover:text-accent"
+								class="inline-flex items-center border border-line bg-surface-raised px-4 py-2.5 text-sm font-medium text-secondary transition hover:border-accent/40 hover:text-accent"
 							>
-								<span aria-hidden="true">{category.emoji}</span>
 								{category.title}
 							</a>
 						))}
 					</nav>
 				</div>
 
-				<div class="space-y-16">
-					{repoCategories.map((category) => <CategorySection category={category} />)}
+				<div class="category-rail-track relative space-y-16 pl-2">
+					{repoCategories.map((category, index) => (
+						<CategorySection category={category} index={index} />
+					))}
 				</div>
 			</div>
 		</section>
 	</main>
 	<Footer />
+	<ScrollFx />
+	<ScrollReveal />
 </BaseLayout>

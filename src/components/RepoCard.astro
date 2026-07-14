@@ -3,27 +3,38 @@ import type { Repo } from "../data/repos";
 
 interface Props {
 	repo: Repo;
+	index: number;
+	accent: string;
 }
 
-const { repo } = Astro.props;
+const { repo, index, accent } = Astro.props;
 
 const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean);
+const number = String(index + 1).padStart(2, "0");
 ---
 
 <article
-	class="group border border-line bg-surface-raised p-5 transition hover:border-accent/35 hover:bg-surface"
+	class="repo-card reveal-card group relative overflow-hidden border border-line bg-surface-raised p-5 transition duration-300 hover:border-[color:var(--card-accent)]/45 hover:bg-surface"
+	style={`--card-accent: ${accent}; --reveal-delay: ${index * 80}ms`}
 >
-	<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+	<span
+		class="pointer-events-none absolute right-4 top-4 font-mono text-xs tabular-nums text-muted/50 transition duration-300 group-hover:text-[color:var(--card-accent)]/70"
+		aria-hidden="true"
+	>
+		{number}
+	</span>
+
+	<div class="flex flex-col gap-3 pr-8 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:pr-10">
 		<h3 class="text-lg font-semibold text-ink">
 			<a
 				href={repo.url}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex items-center gap-2 transition group-hover:text-accent"
+				class="inline-flex items-center gap-2 transition duration-300 group-hover:text-[color:var(--card-accent)]"
 			>
 				<span>{repo.name}</span>
 				<svg
-					class="h-3.5 w-3.5 text-accent opacity-70 transition group-hover:opacity-100"
+					class="repo-card-arrow h-3.5 w-3.5 text-[color:var(--card-accent)] opacity-70 transition duration-300 group-hover:opacity-100"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
@@ -49,7 +60,7 @@ const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean
 		}
 	</div>
 
-	<p class="mt-1 text-base leading-relaxed text-secondary">
+	<p class="mt-1 text-base leading-relaxed text-secondary transition duration-300 group-hover:text-secondary/90">
 		{repo.description}
 	</p>
 </article>

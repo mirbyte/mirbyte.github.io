@@ -1,0 +1,62 @@
+<div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+
+<script>
+	const cursor = document.getElementById("custom-cursor");
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const finePointer = window.matchMedia("(pointer: fine)");
+	const canHover = window.matchMedia("(hover: hover)");
+
+	if (!cursor || reducedMotion.matches || !finePointer.matches || !canHover.matches) {
+		cursor?.remove();
+	} else {
+		let targetX = 0;
+		let targetY = 0;
+		let currentX = 0;
+		let currentY = 0;
+		let active = false;
+
+		const paint = () => {
+			currentX += (targetX - currentX) * 0.28;
+			currentY += (targetY - currentY) * 0.28;
+			cursor.style.left = `${currentX}px`;
+			cursor.style.top = `${currentY}px`;
+			requestAnimationFrame(paint);
+		};
+
+		const show = (x: number, y: number) => {
+			targetX = x;
+			targetY = y;
+
+			if (!active) {
+				active = true;
+				currentX = x;
+				currentY = y;
+				document.body.classList.add("has-custom-cursor");
+				requestAnimationFrame(paint);
+			}
+
+			cursor.classList.add("is-visible");
+		};
+
+		document.addEventListener(
+			"mousemove",
+			(event) => {
+				show(event.clientX, event.clientY);
+			},
+			{ passive: true },
+		);
+
+		document.addEventListener("mouseover", (event) => {
+			const target = (event.target as Element).closest('a[href], button:not(:disabled), [role="button"]:not([aria-disabled="true"])');
+			cursor.classList.toggle("is-hover", Boolean(target));
+		});
+
+		document.documentElement.addEventListener("mouseleave", () => {
+			cursor.classList.remove("is-visible");
+		});
+
+		document.documentElement.addEventListener("mouseenter", () => {
+			if (active) cursor.classList.add("is-visible");
+		});
+	}
+</script>

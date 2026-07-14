@@ -2,25 +2,24 @@
 import { site } from "../data/site";
 ---
 
-<section class="relative flex min-h-screen flex-col justify-end px-6 pb-20 pt-32">
+<section data-hero class="relative flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-20 pt-32">
+	<div id="hero-grid" class="tech-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
 	<div class="relative mx-auto w-full max-w-6xl">
-		<p class="label-line mb-8 text-sm font-medium text-muted">
+		<p class="hero-enter hero-label label-line mb-8 text-sm font-medium text-muted">
 			Software index
 		</p>
 
 		<h1 class="max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight text-ink sm:text-7xl lg:text-8xl">
-			{site.headline[0]}
+			<span class="hero-enter hero-line hero-line-1">{site.headline[0]}</span>
 			<br />
-			<span class="sm:whitespace-nowrap">{site.headline[1]}</span>
+			<span class="hero-enter hero-line hero-line-2 sm:whitespace-nowrap">{site.headline[1]}</span>
 		</h1>
-
-		<p class="mt-8 max-w-xl text-base leading-relaxed text-secondary sm:text-lg">
-			{site.bio}
-		</p>
 	</div>
 
-	<div class="relative mx-auto mt-20 flex w-full max-w-6xl items-center gap-3 text-muted" aria-hidden="true">
+	<div class="hero-enter hero-scroll-cue relative mx-auto mt-20 flex w-full max-w-6xl items-center gap-3 text-muted" aria-hidden="true">
 		<span class="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
 		<span class="h-px flex-1 max-w-16 bg-line"></span>
+		<span class="tech-crosshair h-2 w-2 border border-line/80"></span>
 	</div>
 </section>

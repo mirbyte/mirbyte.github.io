@@ -1,0 +1,62 @@
+
+<script>
+	const catalogGrid = document.getElementById("catalog-grid");
+	const catalogGlows = document.getElementById("catalog-glows");
+	const hero = document.querySelector<HTMLElement>("[data-hero]");
+	const heroGrid = document.getElementById("hero-grid");
+	const software = document.getElementById("software");
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+	if (reducedMotion.matches) {
+		if (catalogGrid) catalogGrid.style.opacity = "0.32";
+		if (catalogGlows) catalogGlows.style.opacity = "0";
+		if (heroGrid) heroGrid.style.opacity = "1";
+	} else {
+		let ticking = false;
+
+		const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+		const update = () => {
+			const y = window.scrollY;
+			const viewport = window.innerHeight;
+			const heroHeight = hero?.offsetHeight ?? viewport;
+			const pastHero = Math.max(0, y - heroHeight);
+			const heroProgress = clamp(y / (heroHeight * 0.92), 0, 1);
+
+			if (heroGrid) {
+				heroGrid.style.opacity = (1 - heroProgress * 0.9).toFixed(3);
+				heroGrid.style.transform = `translate3d(0, ${(heroProgress * 28).toFixed(1)}px, 0)`;
+			}
+
+			if (catalogGlows) {
+				const glowProgress = clamp(pastHero / (viewport * 0.75), 0, 1);
+				catalogGlows.style.opacity = (glowProgress * 0.75).toFixed(3);
+				catalogGlows.style.transform = `translate3d(${(pastHero * 0.06).toFixed(1)}px, ${(pastHero * 0.22).toFixed(1)}px, 0)`;
+			}
+
+			if (catalogGrid && software) {
+				const top = software.getBoundingClientRect().top;
+				const inCatalog = clamp(1 - top / (viewport * 0.85), 0, 1);
+				const opacity = inCatalog * 0.3;
+				catalogGrid.style.opacity = opacity.toFixed(3);
+				catalogGrid.style.transform = `translate3d(0, ${((1 - inCatalog) * 16).toFixed(1)}px, 0)`;
+			}
+
+			ticking = false;
+		};
+
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(update);
+				}
+			},
+			{ passive: true },
+		);
+
+		window.addEventListener("resize", update, { passive: true });
+		update();
+	}
+</script>

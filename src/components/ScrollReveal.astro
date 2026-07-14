@@ -1,0 +1,56 @@
+
+<script>
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const cards = document.querySelectorAll<HTMLElement>(".reveal-card");
+	const sections = document.querySelectorAll<HTMLElement>(".category-section");
+
+	if (reducedMotion.matches) {
+		cards.forEach((card) => card.classList.add("is-revealed"));
+		sections[0]?.classList.add("is-active");
+	} else {
+		const cardObserver = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) continue;
+					entry.target.classList.add("is-revealed");
+					cardObserver.unobserve(entry.target);
+				}
+			},
+			{ rootMargin: "0px 0px -6% 0px", threshold: 0.05 },
+		);
+
+		cards.forEach((card) => cardObserver.observe(card));
+
+		const activateCategory = () => {
+			if (sections.length === 0) return;
+
+			const trigger = window.innerHeight * 0.38;
+			let active = sections[0];
+
+			for (const section of sections) {
+				if (section.getBoundingClientRect().top <= trigger) {
+					active = section;
+				}
+			}
+
+			for (const section of sections) {
+				section.classList.toggle("is-active", section === active);
+			}
+		};
+
+		let categoryTicking = false;
+
+		const scheduleCategoryUpdate = () => {
+			if (categoryTicking) return;
+			categoryTicking = true;
+			requestAnimationFrame(() => {
+				activateCategory();
+				categoryTicking = false;
+			});
+		};
+
+		window.addEventListener("scroll", scheduleCategoryUpdate, { passive: true });
+		window.addEventListener("resize", scheduleCategoryUpdate, { passive: true });
+		activateCategory();
+	}
+</script>
