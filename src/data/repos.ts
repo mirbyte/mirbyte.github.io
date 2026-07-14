@@ -75,13 +75,6 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["windows"],
 			},
 			{
-				name: "SlimBrave",
-				description: "Debloat Brave for faster performance and smoother browsing.",
-				url: "https://github.com/mirbyte/SlimBrave",
-				language: "PowerShell",
-				topics: ["windows", "browser"],
-			},
-			{
 				name: "HostsMatic",
 				description: "Lightweight hosts file automation. Checks for blocklist updates at Windows startup.",
 				url: "https://github.com/mirbyte/HostsMatic",
