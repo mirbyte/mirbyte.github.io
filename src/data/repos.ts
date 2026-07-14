@@ -61,25 +61,11 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["windows"],
 			},
 			{
-				name: "Windows-Repair-Tool",
-				description:
-					"Interactive repair and maintenance tool with diagnostics, file system checks, and Windows Update troubleshooting.",
-				url: "https://github.com/mirbyte/Windows-Repair-Tool",
-				topics: ["windows", "maintenance"],
-			},
-			{
 				name: "Phone-Link-Uninstaller",
 				description: "Uninstall Phone Link completely. Tested on Windows 11.",
 				url: "https://github.com/mirbyte/Phone-Link-Uninstaller",
 				language: "PowerShell",
 				topics: ["windows"],
-			},
-			{
-				name: "HostsMatic",
-				description: "Lightweight hosts file automation. Checks for blocklist updates at Windows startup.",
-				url: "https://github.com/mirbyte/HostsMatic",
-				language: "Batchfile",
-				topics: ["windows", "privacy"],
 			},
 			{
 				name: "Android-Archiver",
@@ -89,24 +75,11 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["windows", "android"],
 			},
 			{
-				name: "FileDiff",
-				description: "Visual file and directory diff tool.",
-				url: "https://github.com/mirbyte/FileDiff",
-				topics: ["windows"],
-			},
-			{
 				name: "StreamBlock",
 				description: "Create draggable colored overlay blocks on your screen.",
 				url: "https://github.com/mirbyte/StreamBlock",
 				language: "Python",
 				topics: ["windows", "overlay"],
-			},
-			{
-				name: "apktool-updater-windows",
-				description: "Updater and installer for apktool.jar from iBotPeaches. Tested on Windows 11.",
-				url: "https://github.com/mirbyte/apktool-updater-windows",
-				language: "Python",
-				topics: ["windows", "android"],
 			},
 		],
 	},
@@ -142,13 +115,6 @@ export const repoCategories: RepoCategory[] = [
 				url: "https://github.com/mirbyte/Text-List-Tools",
 				language: "Python",
 				topics: ["python"],
-			},
-			{
-				name: "portapps-qBittorrent-updater",
-				description: "Update the portable qBittorrent client from portapps.io.",
-				url: "https://github.com/mirbyte/portapps-qBittorrent-updater",
-				language: "Python",
-				topics: ["portable", "windows"],
 			},
 			{
 				name: "portapps-Brave-updater",
