@@ -162,7 +162,7 @@ export const repoCategories: RepoCategory[] = [
 	},
 	{
 		id: "trading",
-		title: "Trading",
+		title: "Markets & trading",
 		description: "Indicators and bots for TradingView and cTrader.",
 		repos: [
 			{

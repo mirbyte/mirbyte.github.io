@@ -151,7 +151,7 @@
 	}
 
 	.category-watermark {
-		color: color-mix(in srgb, var(--category-accent) 10%, transparent);
+		color: color-mix(in srgb, var(--category-accent) 4%, transparent);
 		transition: color 0.45s ease;
 	}
 
@@ -174,7 +174,7 @@
 	}
 
 	.category-section.is-active .category-watermark {
-		color: color-mix(in srgb, var(--category-accent) 24%, transparent);
+		color: color-mix(in srgb, var(--category-accent) 8%, transparent);
 	}
 
 	.category-section.is-active .category-node {
