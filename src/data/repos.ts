@@ -132,7 +132,7 @@ export const repoCategories: RepoCategory[] = [
 		repos: [
 			{
 				name: "mirbyte.github.io",
-				description: "This site — a curated index of my software.",
+				description: "This site.",
 				url: "https://github.com/mirbyte/mirbyte.github.io",
 				language: "Astro",
 				topics: ["astro", "github-pages"],
