@@ -9,7 +9,6 @@ export type Repo = {
 export type RepoCategory = {
 	id: string;
 	title: string;
-	description: string;
 	repos: Repo[];
 };
 
@@ -21,7 +20,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "windows",
 		title: "Windows tools",
-		description: "Desktop utilities, tray apps, context menus, and system helpers.",
 		repos: [
 			{
 				name: "IconPull",
@@ -86,7 +84,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "scripts",
 		title: "Scripts & automation",
-		description: "Python scripts, portable app updaters, and file utilities.",
 		repos: [
 			{
 				name: "Simple-File-Management-Scripts",
@@ -128,7 +125,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "web",
 		title: "Websites",
-		description: "Sites and web-facing projects.",
 		repos: [
 			{
 				name: "mirbyte.github.io",
@@ -149,7 +145,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "audio",
 		title: "Audio",
-		description: "Music and loudness tools.",
 		repos: [
 			{
 				name: "DropGain",
@@ -163,7 +158,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "trading",
 		title: "Markets & trading",
-		description: "Indicators and bots for TradingView and cTrader.",
 		repos: [
 			{
 				name: "TradingView-Indicators",
@@ -197,7 +191,6 @@ export const repoCategories: RepoCategory[] = [
 	{
 		id: "browser",
 		title: "Browser",
-		description: "Userscripts and browser-related tweaks.",
 		repos: [
 			{
 				name: "TwitchTV-Userscripts",

@@ -163,32 +163,13 @@
 			transform 0.45s ease;
 	}
 
-	.category-rail {
-		background: linear-gradient(
-			to bottom,
-			color-mix(in srgb, var(--category-accent) 55%, var(--color-line)),
-			var(--color-line) 35%,
-			transparent
-		);
-		transition: background 0.45s ease;
-	}
-
 	.category-section.is-active .category-watermark {
 		color: color-mix(in srgb, var(--category-accent) 8%, transparent);
 	}
 
 	.category-section.is-active .category-node {
 		box-shadow: 0 0 18px color-mix(in srgb, var(--category-accent) 70%, transparent);
-		transform: translateX(-50%) scale(1.35);
-	}
-
-	.category-section.is-active .category-rail {
-		background: linear-gradient(
-			to bottom,
-			var(--category-accent),
-			color-mix(in srgb, var(--category-accent) 45%, var(--color-line)) 45%,
-			transparent
-		);
+		transform: translate(-50%, -50%) scale(1.35);
 	}
 
 	.category-section.is-active .category-section-header h2 {
@@ -218,12 +199,11 @@
 			opacity: 0;
 			transform: translateY(18px);
 			transition:
-				opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-				transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+				opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+				transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
 				border-color 0.3s ease,
 				background-color 0.3s ease,
 				box-shadow 0.3s ease;
-			transition-delay: var(--reveal-delay, 0ms);
 		}
 
 		.reveal-card.is-revealed {
