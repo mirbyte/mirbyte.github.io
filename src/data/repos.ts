@@ -4,6 +4,8 @@ export type Repo = {
 	url: string;
 	language?: string;
 	topics?: string[];
+	/** Shows a "new" badge on the card. Remove when it no longer feels new. */
+	isNew?: boolean;
 };
 
 export type RepoCategory = {
@@ -28,6 +30,7 @@ export const repoCategories: RepoCategory[] = [
 				url: "https://github.com/mirbyte/IconPull",
 				language: "C#",
 				topics: ["windows", "icons"],
+				isNew: true,
 			},
 			{
 				name: "file-hash-verifier",
@@ -66,13 +69,6 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["windows"],
 			},
 			{
-				name: "Android-Archiver",
-				description: "Fast Android file system backups on Windows, kept as simple as possible.",
-				url: "https://github.com/mirbyte/Android-Archiver",
-				language: "Python",
-				topics: ["windows", "android"],
-			},
-			{
 				name: "StreamBlock",
 				description: "Create draggable colored overlay blocks on your screen.",
 				url: "https://github.com/mirbyte/StreamBlock",
@@ -91,6 +87,13 @@ export const repoCategories: RepoCategory[] = [
 				url: "https://github.com/mirbyte/Simple-File-Management-Scripts",
 				language: "Python",
 				topics: ["python", "files"],
+			},
+			{
+				name: "Android-Archiver",
+				description: "Fast Android file system backups on Windows, kept as simple as possible.",
+				url: "https://github.com/mirbyte/Android-Archiver",
+				language: "Python",
+				topics: ["android", "backup"],
 			},
 			{
 				name: "onetxt",
@@ -119,6 +122,15 @@ export const repoCategories: RepoCategory[] = [
 				url: "https://github.com/mirbyte/portapps-Brave-updater",
 				language: "Python",
 				topics: ["portable", "windows"],
+			},
+			{
+				name: "setup-qbittorrent-portable",
+				description:
+					"Install and update the official qBittorrent Windows x64 client in native portable mode.",
+				url: "https://github.com/mirbyte/setup-qbittorrent-portable",
+				language: "PowerShell",
+				topics: ["portable", "windows"],
+				isNew: true,
 			},
 		],
 	},
@@ -152,6 +164,7 @@ export const repoCategories: RepoCategory[] = [
 				url: "https://github.com/mirbyte/DropGain",
 				language: "Python",
 				topics: ["audio", "edm"],
+				isNew: true,
 			},
 			{
 				name: "duplicate-track-finder",

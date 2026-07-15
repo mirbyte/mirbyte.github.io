@@ -16,7 +16,18 @@ const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean
 	class="repo-card reveal-card group relative overflow-hidden border border-line bg-surface-raised p-5 transition duration-300 hover:border-[color:var(--card-accent)]/45 hover:bg-surface"
 	style={`--card-accent: ${accent}; --reveal-delay: ${index * 80}ms`}
 >
-	<div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3">
+	{
+		repo.isNew && (
+			<>
+				<span class="repo-new-watermark pointer-events-none absolute select-none" aria-hidden="true">
+					NEW
+				</span>
+				<span class="sr-only">Recently added</span>
+			</>
+		)
+	}
+
+	<div class="relative z-[1] grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3">
 		<h3 class="min-w-0 text-lg font-semibold leading-tight text-ink">
 			<a
 				href={repo.url}
