@@ -1,0 +1,84 @@
+---
+---
+
+<div class="theme-toggle" data-theme-toggle role="radiogroup" aria-label="Site theme">
+	<label class="theme-toggle__option">
+		<input type="radio" name="site-theme" value="modern" class="theme-toggle__input" />
+		<span class="theme-toggle__label">Modern</span>
+	</label>
+	<label class="theme-toggle__option">
+		<input type="radio" name="site-theme" value="tkinter" class="theme-toggle__input" />
+		<span class="theme-toggle__label">Tkinter</span>
+	</label>
+</div>
+
+<script>
+	import { getTheme, isTkinter, setTheme, type Theme } from "../lib/theme";
+
+	const toggle = document.querySelector<HTMLElement>("[data-theme-toggle]");
+	const hero = document.querySelector<HTMLElement>("[data-hero]");
+	const inputs = document.querySelectorAll<HTMLInputElement>(".theme-toggle__input");
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+	const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+	const syncInputs = (theme: Theme) => {
+		for (const input of inputs) {
+			input.checked = input.value === theme;
+		}
+	};
+
+	const updateScrollFade = () => {
+		if (!toggle) return;
+
+		if (isTkinter() || !hero || reducedMotion.matches) {
+			toggle.style.opacity = "";
+			toggle.style.pointerEvents = "";
+			toggle.removeAttribute("aria-hidden");
+			return;
+		}
+
+		const heroHeight = hero.offsetHeight;
+		const fadeStart = heroHeight * 0.12;
+		const fadeEnd = heroHeight * 0.88;
+		const progress = clamp((window.scrollY - fadeStart) / (fadeEnd - fadeStart), 0, 1);
+		const opacity = 1 - progress;
+
+		toggle.style.opacity = opacity.toFixed(3);
+		toggle.style.pointerEvents = opacity < 0.05 ? "none" : "";
+		toggle.toggleAttribute("aria-hidden", opacity < 0.05);
+	};
+
+	syncInputs(getTheme());
+
+	for (const input of inputs) {
+		input.addEventListener("change", () => {
+			if (!input.checked) return;
+			setTheme(input.value as Theme);
+		});
+	}
+
+	window.addEventListener("themechange", (event) => {
+		const theme = (event as CustomEvent<{ theme: Theme }>).detail.theme;
+		syncInputs(theme);
+		updateScrollFade();
+	});
+
+	if (toggle && hero && !isTkinter() && !reducedMotion.matches) {
+		let ticking = false;
+
+		const onScroll = () => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(() => {
+					updateScrollFade();
+					ticking = false;
+				});
+			}
+		};
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("resize", updateScrollFade, { passive: true });
+		updateScrollFade();
+	}
+</script>

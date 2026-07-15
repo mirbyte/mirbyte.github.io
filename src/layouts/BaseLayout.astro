@@ -48,6 +48,15 @@ const ogImage = new URL("/og.jpg", siteUrl).href;
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<script is:inline>
+			(function () {
+				try {
+					if (localStorage.getItem("mirbyte-theme") === "tkinter") {
+						document.documentElement.dataset.theme = "tkinter";
+					}
+				} catch (_) {}
+			})();
+		</script>
 	</head>
 	<body class="page-bg min-h-screen">
 		<slot />

@@ -1,12 +1,18 @@
 
 <script>
+	import { isTkinter } from "../lib/theme";
+
 	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 	const cards = document.querySelectorAll<HTMLElement>(".reveal-card");
 	const sections = document.querySelectorAll<HTMLElement>(".category-section");
 
-	if (reducedMotion.matches) {
+	const revealAll = () => {
 		cards.forEach((card) => card.classList.add("is-revealed"));
 		sections[0]?.classList.add("is-active");
+	};
+
+	if (isTkinter() || reducedMotion.matches) {
+		revealAll();
 	} else {
 		const cardObserver = new IntersectionObserver(
 			(entries) => {

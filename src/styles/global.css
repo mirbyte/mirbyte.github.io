@@ -500,3 +500,370 @@
 		stroke-dashoffset: 0;
 	}
 }
+
+/* ── Site header ──────────────────────────────────────────────── */
+
+.site-header__inner {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.site-header__brand {
+	justify-self: start;
+	min-width: 0;
+}
+
+.site-header__center {
+	justify-self: center;
+}
+
+.site-header__nav {
+	justify-self: end;
+	min-width: 0;
+}
+
+@media (max-width: 380px) {
+	.theme-toggle__label {
+		padding-inline: 0.5rem;
+		font-size: 0.625rem;
+	}
+}
+
+/* ── Theme toggle ─────────────────────────────────────────────── */
+
+.theme-toggle {
+	display: inline-flex;
+	align-items: stretch;
+	gap: 0;
+	will-change: opacity;
+}
+
+.theme-toggle__option {
+	position: relative;
+	cursor: pointer;
+}
+
+.theme-toggle__input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	margin: 0;
+}
+
+.theme-toggle__label {
+	display: inline-block;
+	padding: 0.45rem 0.7rem;
+	font-size: 0.6875rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	line-height: 1;
+	color: var(--color-muted);
+	border: 1px solid var(--color-line);
+	background: var(--color-surface);
+	transition:
+		color 0.15s ease,
+		background-color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.theme-toggle__option:first-child .theme-toggle__label {
+	border-radius: 2px 0 0 2px;
+}
+
+.theme-toggle__option:last-child .theme-toggle__label {
+	border-radius: 0 2px 2px 0;
+	margin-left: -1px;
+}
+
+.theme-toggle__input:checked + .theme-toggle__label {
+	color: var(--color-ink);
+	background: var(--color-surface-raised);
+	border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-line));
+}
+
+.theme-toggle__input:focus-visible + .theme-toggle__label {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 1px;
+}
+
+/* ── Theme visibility ─────────────────────────────────────────── */
+
+[data-theme="tkinter"] .modern-only {
+	display: none !important;
+}
+
+.tkinter-only {
+	display: none;
+}
+
+[data-theme="tkinter"] .tkinter-only {
+	display: block;
+}
+
+/* ── Tkinter / desktop utility theme ──────────────────────────── */
+
+[data-theme="tkinter"] {
+	--font-sans: "Segoe UI", system-ui, sans-serif;
+	--font-mono: Consolas, "Cascadia Mono", ui-monospace, monospace;
+	--color-canvas: #ececec;
+	--color-surface: #ffffff;
+	--color-surface-raised: #f5f5f5;
+	--color-ink: #000000;
+	--color-secondary: #333333;
+	--color-muted: #555555;
+	--color-accent: #000080;
+	--color-accent-hover: #000080;
+	--color-line: #a0a0a0;
+}
+
+[data-theme="tkinter"] body {
+	font-size: 0.8125rem;
+	line-height: 1.35;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+[data-theme="tkinter"] a,
+[data-theme="tkinter"] .repo-card,
+[data-theme="tkinter"] .header-github,
+[data-theme="tkinter"] .repo-download,
+[data-theme="tkinter"] .theme-toggle__label {
+	transition: none;
+}
+
+[data-theme="tkinter"] ::selection {
+	background: #316ac5;
+	color: #fff;
+}
+
+[data-theme="tkinter"] .page-bg {
+	animation: none;
+	background-color: var(--color-canvas);
+	background-image: none;
+}
+
+[data-theme="tkinter"] .site-header {
+	position: sticky;
+	background: var(--color-canvas);
+	backdrop-filter: none;
+	border-bottom: 1px solid var(--color-line);
+}
+
+[data-theme="tkinter"] .site-header__inner {
+	padding-top: 0.65rem;
+	padding-bottom: 0.65rem;
+}
+
+[data-theme="tkinter"] .site-header__brand {
+	text-transform: none;
+	letter-spacing: normal;
+	font-size: 0.8125rem;
+	font-weight: 600;
+}
+
+[data-theme="tkinter"] .site-header .header-github {
+	border-radius: 0;
+	text-transform: none;
+	letter-spacing: normal;
+	font-size: 0.75rem;
+	background: var(--color-canvas);
+}
+
+[data-theme="tkinter"] .site-header .header-github:hover {
+	background: var(--color-canvas);
+	border-color: #555555;
+	color: var(--color-ink);
+}
+
+[data-theme="tkinter"] .theme-toggle__label {
+	font-size: 0.6875rem;
+	text-transform: none;
+	letter-spacing: normal;
+	border-radius: 0;
+}
+
+[data-theme="tkinter"] .theme-toggle__option:first-child .theme-toggle__label,
+[data-theme="tkinter"] .theme-toggle__option:last-child .theme-toggle__label {
+	border-radius: 0;
+}
+
+[data-theme="tkinter"] .theme-toggle__input:checked + .theme-toggle__label {
+	background: #d4d4d4;
+	border-color: #555555;
+	color: var(--color-ink);
+}
+
+[data-theme="tkinter"] .tkinter-catalog-header h1 {
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+[data-theme="tkinter"] .software-section {
+	overflow: visible;
+}
+
+[data-theme="tkinter"] .software-section > .relative {
+	padding-top: 0.75rem;
+	padding-bottom: 1.5rem;
+}
+
+[data-theme="tkinter"] .software-intro {
+	margin-bottom: 1rem;
+}
+
+[data-theme="tkinter"] .software-intro h2 {
+	margin-top: 0;
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: normal;
+}
+
+[data-theme="tkinter"] .category-rail-track::before {
+	display: none;
+}
+
+[data-theme="tkinter"] .category-rail-track {
+	padding-left: 0;
+}
+
+[data-theme="tkinter"] .category-rail-track > * + * {
+	margin-top: 1rem;
+}
+
+[data-theme="tkinter"] .category-section {
+	border: 1px solid var(--color-line);
+	background: var(--color-surface);
+	padding: 0.85rem 0.65rem 0.65rem;
+	margin-top: 0.35rem;
+}
+
+[data-theme="tkinter"] .category-section-header {
+	position: relative;
+	padding-left: 0;
+	margin: -1.45rem 0 0.5rem 0.5rem;
+	width: fit-content;
+	background: var(--color-surface);
+	padding-inline: 0.3rem;
+}
+
+[data-theme="tkinter"] .category-section-header h2 {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: normal;
+	color: var(--color-ink) !important;
+}
+
+[data-theme="tkinter"] .category-section.is-active .category-section-header h2 {
+	color: var(--color-ink) !important;
+}
+
+[data-theme="tkinter"] .category-section .grid {
+	gap: 0.25rem;
+}
+
+[data-theme="tkinter"] .reveal-card {
+	opacity: 1;
+	transform: none;
+	transition: none;
+}
+
+[data-theme="tkinter"] .repo-card {
+	border-radius: 0;
+	box-shadow: none !important;
+	border-color: var(--color-line);
+	background: var(--color-surface-raised);
+	padding: 0.45rem 0.55rem;
+}
+
+[data-theme="tkinter"] .repo-card:hover {
+	border-color: #555555;
+	background: var(--color-surface-raised);
+}
+
+[data-theme="tkinter"] .repo-card h3 {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+[data-theme="tkinter"] .repo-card h3 a {
+	text-decoration: none;
+	color: var(--color-ink);
+}
+
+[data-theme="tkinter"] .repo-card h3 a:hover {
+	color: var(--color-ink);
+	text-decoration: underline;
+}
+
+[data-theme="tkinter"] .repo-card > p,
+[data-theme="tkinter"] .repo-card p {
+	font-size: 0.75rem;
+	line-height: 1.35;
+	margin-top: 0.1rem;
+}
+
+[data-theme="tkinter"] .repo-card .grid {
+	gap: 0.25rem 0.5rem;
+}
+
+[data-theme="tkinter"] .repo-tag {
+	border-radius: 0;
+	font-size: 0.625rem;
+	background: var(--color-canvas);
+	border-color: var(--color-line);
+	padding: 0.05rem 0.3rem;
+	line-height: 1.3;
+}
+
+[data-theme="tkinter"] .repo-download {
+	border-radius: 0;
+	border: 1px solid var(--color-line);
+	background: var(--color-canvas);
+	color: var(--color-ink);
+	width: auto;
+	height: auto;
+	padding: 0.1rem 0.35rem;
+	font-size: 0.6875rem;
+}
+
+[data-theme="tkinter"] .repo-download:hover {
+	background: var(--color-canvas);
+	border-color: #555555;
+	color: var(--color-ink);
+}
+
+[data-theme="tkinter"] .site-footer {
+	border-top: 1px solid var(--color-line);
+	background: var(--color-canvas);
+}
+
+[data-theme="tkinter"] .site-footer > div {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	gap: 0.25rem;
+}
+
+[data-theme="tkinter"] .site-footer p,
+[data-theme="tkinter"] .site-footer a {
+	font-size: 0.6875rem;
+}
+
+[data-theme="tkinter"] .site-footer a:hover {
+	color: var(--color-ink);
+	text-decoration: underline;
+}
+
+[data-theme="tkinter"] .custom-cursor {
+	display: none !important;
+}
+
+[data-theme="tkinter"] body.has-custom-cursor,
+[data-theme="tkinter"] body.has-custom-cursor a,
+[data-theme="tkinter"] body.has-custom-cursor button {
+	cursor: auto !important;
+}

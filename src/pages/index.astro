@@ -13,37 +13,41 @@ import { site } from "../data/site";
 <BaseLayout title={site.name} description={`${site.tagline} ${site.description}`}>
 	<div
 		id="catalog-glows"
-		class="catalog-glows pointer-events-none fixed inset-0 z-0"
+		class="modern-only catalog-glows pointer-events-none fixed inset-0 z-0"
 		aria-hidden="true"
 	></div>
 	<Header />
 	<main class="relative z-10">
 		<Hero />
 
+		<div class="tkinter-only tkinter-catalog-header relative mx-auto max-w-7xl px-6 pt-4 pb-1">
+			<h1 class="font-semibold">{site.name} — Software catalog</h1>
+		</div>
+
 		<section id="software" class="software-section relative overflow-hidden">
 			<div
 				id="catalog-grid"
-				class="catalog-grid tech-grid tech-grid-soft pointer-events-none absolute inset-0"
+				class="modern-only catalog-grid tech-grid tech-grid-soft pointer-events-none absolute inset-0"
 				aria-hidden="true"
 			></div>
 			<div class="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-16 pb-24">
-				<div class="mb-14">
-					<p class="label-line text-sm font-medium text-muted">
+				<div class="software-intro mb-14">
+					<p class="modern-only label-line text-sm font-medium text-muted">
 						Curated list
 					</p>
 					<h2 class="mt-6 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
 						Software by category
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-secondary">
+					<p class="modern-only mt-4 max-w-2xl text-base leading-relaxed text-secondary">
 						Not everything on my GitHub profile is here — just the repos worth finding.
 						Pick a category below or scroll through the list.
 					</p>
 
-					<nav class="mt-8 flex flex-wrap gap-2" aria-label="Categories">
+					<nav class="modern-only mt-8 flex flex-wrap gap-2" aria-label="Categories">
 						{repoCategories.map((category) => (
 							<a
 								href={`#${category.id}`}
-								class="inline-flex items-center border border-line bg-surface-raised px-4 py-2.5 text-sm font-medium text-secondary transition hover:border-accent/40 hover:text-accent"
+								class="category-nav-link inline-flex items-center border border-line bg-surface-raised px-4 py-2.5 text-sm font-medium text-secondary transition hover:border-accent/40 hover:text-accent"
 							>
 								{category.title}
 							</a>

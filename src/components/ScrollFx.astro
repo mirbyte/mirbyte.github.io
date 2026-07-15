@@ -1,5 +1,7 @@
 
 <script>
+	import { isTkinter } from "../lib/theme";
+
 	const catalogGrid = document.getElementById("catalog-grid");
 	const catalogGlows = document.getElementById("catalog-glows");
 	const hero = document.querySelector<HTMLElement>("[data-hero]");
@@ -7,7 +9,15 @@
 	const software = document.getElementById("software");
 	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-	if (reducedMotion.matches) {
+	const resetStatic = () => {
+		if (catalogGrid) catalogGrid.style.opacity = "0";
+		if (catalogGlows) catalogGlows.style.opacity = "0";
+		if (heroGrid) heroGrid.style.opacity = "0";
+	};
+
+	if (isTkinter()) {
+		resetStatic();
+	} else if (reducedMotion.matches) {
 		if (catalogGrid) catalogGrid.style.opacity = "0.32";
 		if (catalogGlows) catalogGlows.style.opacity = "0";
 		if (heroGrid) heroGrid.style.opacity = "1";

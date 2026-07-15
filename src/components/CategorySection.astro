@@ -18,11 +18,11 @@ const categoryNumber = String(index + 1).padStart(2, "0");
 	style={`--category-accent: ${accent}`}
 >
 	<div class="category-section-header relative mb-6 pl-8">
-		<span class="category-watermark pointer-events-none absolute -left-2 top-1/2 -translate-y-1/2 select-none font-mono text-[clamp(4rem,14vw,7rem)] font-bold leading-none tabular-nums" aria-hidden="true">
+		<span class="modern-only category-watermark pointer-events-none absolute -left-2 top-1/2 -translate-y-1/2 select-none font-mono text-[clamp(4rem,14vw,7rem)] font-bold leading-none tabular-nums" aria-hidden="true">
 			{categoryNumber}
 		</span>
 
-		<span class="category-node pointer-events-none absolute left-0 top-1/2 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></span>
+		<span class="modern-only category-node pointer-events-none absolute left-0 top-1/2 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></span>
 
 		<h2 class="relative text-2xl font-bold tracking-tight text-ink sm:text-3xl">
 			{category.title}
