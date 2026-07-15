@@ -153,6 +153,14 @@ export const repoCategories: RepoCategory[] = [
 				language: "Python",
 				topics: ["audio", "edm"],
 			},
+			{
+				name: "duplicate-track-finder",
+				description:
+					"Find likely duplicate tracks in a music library by comparing normalized title and artist metadata.",
+				url: "https://github.com/mirbyte/duplicate-track-finder",
+				language: "Python",
+				topics: ["audio", "music-library"],
+			},
 		],
 	},
 	{
