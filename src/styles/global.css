@@ -206,14 +206,14 @@
 		font-weight: 900;
 		line-height: 0.92;
 		letter-spacing: 0.05em;
-		color: color-mix(in srgb, var(--card-accent) 8%, transparent);
+		color: color-mix(in srgb, var(--card-accent) 14%, transparent);
 		transform: translateY(-50%) scale(1.85, 0.7);
 		transform-origin: center center;
 		transition: color 0.35s ease;
 	}
 
 	.repo-card:hover .repo-new-watermark {
-		color: color-mix(in srgb, var(--card-accent) 13%, transparent);
+		color: color-mix(in srgb, var(--card-accent) 22%, transparent);
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
