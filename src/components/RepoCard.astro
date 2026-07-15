@@ -33,7 +33,9 @@ const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean
 				href={repo.url}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="transition duration-300 group-hover:text-[color:var(--card-accent)]"
+				class="repo-link transition duration-300 group-hover:text-[color:var(--card-accent)]"
+				style={`--cursor-accent: ${accent}`}
+				data-cursor-label="Open on GitHub"
 			>
 				{repo.name}
 				<svg
@@ -50,7 +52,34 @@ const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean
 			</a>
 		</h3>
 
-		<div class="flex items-center justify-end gap-3">
+		<div class="flex items-center justify-end gap-2">
+			{
+				repo.downloadUrl && (
+					<a
+						href={repo.downloadUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="repo-download inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-[#34d399] transition duration-300 hover:bg-[#34d399]/12 hover:text-[#6ee7b7]"
+						aria-label={`Download ${repo.name} release`}
+						data-cursor-label="Download latest"
+					>
+						<svg
+							class="h-4 w-4"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M12 3v12"></path>
+							<path d="m7 10 5 5 5-5"></path>
+							<path d="M5 21h14"></path>
+						</svg>
+					</a>
+				)
+			}
 			{
 				meta.length > 0 && (
 					<ul class="flex flex-wrap justify-end gap-1">

@@ -2,6 +2,8 @@ export type Repo = {
 	name: string;
 	description: string;
 	url: string;
+	/** Direct download of the latest release asset, when one exists. */
+	downloadUrl?: string;
 	language?: string;
 	topics?: string[];
 	/** Shows a "new" badge on the card. Remove when it no longer feels new. */
@@ -58,6 +60,8 @@ export const repoCategories: RepoCategory[] = [
 				name: "windows-drag-threshold",
 				description: "View and adjust the system-wide mouse drag threshold on Windows.",
 				url: "https://github.com/mirbyte/windows-drag-threshold",
+				downloadUrl:
+					"https://github.com/mirbyte/windows-drag-threshold/releases/latest/download/Drag-Threshold-Tool.exe",
 				language: "Python",
 				topics: ["windows"],
 			},

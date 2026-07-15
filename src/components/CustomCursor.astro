@@ -1,4 +1,38 @@
-<div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+<div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+	<span class="custom-cursor__ring"></span>
+	<span class="custom-cursor__core"></span>
+	<span class="custom-cursor__icon-shadow" aria-hidden="true"></span>
+	<span class="custom-cursor__label" aria-hidden="true">Download latest</span>
+	<svg
+		class="custom-cursor__download"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		<g class="custom-cursor__download-arrow">
+			<path class="custom-cursor__download-stem" d="M12 4v10"></path>
+			<path class="custom-cursor__download-head" d="m8 10 4 4 4-4"></path>
+		</g>
+		<path class="custom-cursor__download-tray" d="M6 20h12"></path>
+	</svg>
+	<svg
+		class="custom-cursor__external"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		<path class="custom-cursor__external-line" d="M7 17 17 7"></path>
+		<path class="custom-cursor__external-corner" d="M7 7h10v10"></path>
+	</svg>
+</div>
 
 <script>
 	const cursor = document.getElementById("custom-cursor");
@@ -47,8 +81,34 @@
 		);
 
 		document.addEventListener("mouseover", (event) => {
-			const target = (event.target as Element).closest('a[href], button:not(:disabled), [role="button"]:not([aria-disabled="true"])');
-			cursor.classList.toggle("is-hover", Boolean(target));
+			const el = event.target as Element;
+			const download = el.closest(".repo-download");
+			const repoLink = el.closest(".repo-link");
+			const interactive = el.closest(
+				'a[href], button:not(:disabled), [role="button"]:not([aria-disabled="true"])',
+			);
+
+			cursor.classList.toggle("is-download", Boolean(download));
+			cursor.classList.toggle("is-repo-link", Boolean(repoLink) && !download);
+
+			const label = cursor.querySelector(".custom-cursor__label");
+			if (label instanceof HTMLElement) {
+				if (download) {
+					label.textContent =
+						download.getAttribute("data-cursor-label") ?? "Download latest";
+				} else if (repoLink) {
+					label.textContent = repoLink.getAttribute("data-cursor-label") ?? "Open on GitHub";
+				}
+			}
+
+			if (repoLink) {
+				const accent = getComputedStyle(repoLink).getPropertyValue("--cursor-accent").trim();
+				if (accent) cursor.style.setProperty("--cursor-accent", accent);
+			} else {
+				cursor.style.removeProperty("--cursor-accent");
+			}
+
+			cursor.classList.toggle("is-hover", Boolean(interactive) && !download && !repoLink);
 		});
 
 		document.documentElement.addEventListener("mouseleave", () => {
