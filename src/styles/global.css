@@ -138,8 +138,12 @@
 			animation-delay: 0.26s;
 		}
 
+		.hero-description {
+			animation-delay: 0.34s;
+		}
+
 		.hero-scroll-cue {
-			animation-delay: 0.42s;
+			animation-delay: 0.48s;
 		}
 	}
 

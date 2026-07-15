@@ -10,7 +10,7 @@ import { repoCategories } from "../data/repos";
 import { site } from "../data/site";
 ---
 
-<BaseLayout title={site.name} description={site.tagline}>
+<BaseLayout title={site.name} description={`${site.tagline} ${site.description}`}>
 	<div
 		id="catalog-glows"
 		class="catalog-glows pointer-events-none fixed inset-0 z-0"
