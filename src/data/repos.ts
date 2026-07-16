@@ -132,6 +132,8 @@ export const repoCategories: RepoCategory[] = [
 				description:
 					"Install and update the official qBittorrent Windows x64 client in native portable mode.",
 				url: "https://github.com/mirbyte/setup-qbittorrent-portable",
+				downloadUrl:
+					"https://github.com/mirbyte/setup-qbittorrent-portable/releases/latest/download/setup-qbittorrent-portable.zip",
 				language: "PowerShell",
 				topics: ["portable", "windows"],
 				isNew: true,

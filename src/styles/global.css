@@ -207,10 +207,25 @@
 		font-weight: 900;
 		line-height: 0.92;
 		letter-spacing: 0.05em;
-		color: color-mix(in srgb, var(--card-accent) 14%, transparent);
+		background: linear-gradient(
+			180deg,
+			color-mix(in srgb, var(--card-accent) 11%, transparent) 0%,
+			color-mix(in srgb, var(--card-accent) 18%, transparent) 48%,
+			color-mix(in srgb, var(--card-accent) 11%, transparent) 100%
+		);
+		background-size: 100% 220%;
+		background-position: 0% 115%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
 		transform: translateY(-50%) scale(1.85, 0.7);
 		transform-origin: center center;
-		transition: color 0.35s ease;
+		filter: blur(0.75px);
+		transition:
+			background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+			font-size 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	@media (max-width: 639px), (hover: none) {
@@ -222,8 +237,15 @@
 		}
 	}
 
-	.repo-card:hover .repo-new-watermark {
-		color: color-mix(in srgb, var(--card-accent) 22%, transparent);
+	@media (prefers-reduced-motion: reduce) {
+		.repo-new-watermark {
+			background: none;
+			color: color-mix(in srgb, var(--card-accent) 14%, transparent);
+		}
+
+		.repo-card:hover .repo-new-watermark {
+			color: color-mix(in srgb, var(--card-accent) 22%, transparent);
+		}
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -249,6 +271,44 @@
 
 		.repo-card:hover .repo-card-arrow {
 			transform: translate(3px, -3px);
+		}
+
+		.repo-card:hover .repo-new-watermark {
+			font-size: clamp(2.1rem, 6.25vw, 2.8rem);
+			background-position: 0% 0%;
+			filter: blur(0);
+			transform: translate(3px, calc(-50% - 2px)) scale(1.85, 0.7);
+		}
+
+		@media (max-width: 639px), (hover: none) {
+			.repo-card:hover .repo-new-watermark {
+				font-size: clamp(2.05rem, 6.15vw, 2.72rem);
+				transform: translate(2px, calc(-50% - 2px)) scale(1.2, 1);
+			}
+		}
+
+		.repo-download {
+			animation: repo-download-pulse 3s ease-in-out infinite;
+		}
+
+		.repo-download:hover,
+		.repo-download:focus-visible {
+			animation-play-state: paused;
+		}
+
+		@keyframes repo-download-pulse {
+			0%,
+			100% {
+				color: rgb(52 211 153);
+				background-color: transparent;
+				box-shadow: none;
+			}
+
+			50% {
+				color: rgb(110 231 183);
+				background-color: rgb(52 211 153 / 0.14);
+				box-shadow: 0 0 10px rgb(52 211 153 / 0.12);
+			}
 		}
 	}
 
@@ -829,6 +889,7 @@
 	height: auto;
 	padding: 0.1rem 0.35rem;
 	font-size: 0.6875rem;
+	animation: none;
 }
 
 [data-theme="tkinter"] .repo-download:hover {
