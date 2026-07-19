@@ -30,6 +30,8 @@ export const repoCategories: RepoCategory[] = [
 				description:
 					"Extract icons from .exe, .dll, .mun, and .ico files. Export Shell-rendered PNG, raw ICO, or embedded PNG.",
 				url: "https://github.com/mirbyte/IconPull",
+				downloadUrl:
+					"https://github.com/mirbyte/IconPull/releases/latest/download/IconPull-x64-self-contained.exe",
 				language: "C#",
 				topics: ["windows", "icons"],
 				isNew: true,
