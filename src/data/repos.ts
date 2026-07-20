@@ -170,6 +170,7 @@ export const repoCategories: RepoCategory[] = [
 				name: "DropGain",
 				description: "Peak-safe EDM-oriented drop analysis based track loudness normalization.",
 				url: "https://github.com/mirbyte/DropGain",
+				downloadUrl: "https://dropgain.app/",
 				language: "Python",
 				topics: ["audio", "edm"],
 				isNew: true,
