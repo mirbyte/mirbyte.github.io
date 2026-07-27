@@ -218,19 +218,6 @@ export const repoCategories: RepoCategory[] = [
 			},
 		],
 	},
-	{
-		id: "browser",
-		title: "Browser",
-		repos: [
-			{
-				name: "TwitchTV-Userscripts",
-				description: "Userscript collection for twitch.tv.",
-				url: "https://github.com/mirbyte/TwitchTV-Userscripts",
-				language: "JavaScript",
-				topics: ["userscript", "twitch"],
-			},
-		],
-	},
 ];
 
 export const categoryAccents: Record<string, string> = {
@@ -239,5 +226,4 @@ export const categoryAccents: Record<string, string> = {
 	web: "#34d399",
 	audio: "#f472b6",
 	trading: "#fbbf24",
-	browser: "#fb923c",
 };
