@@ -26,6 +26,17 @@ export const repoCategories: RepoCategory[] = [
 		title: "Windows tools",
 		repos: [
 			{
+				name: "Daylane",
+				description:
+					"Local-only Windows activity tracker. App timeline, idle/away, and key/click counts. No accounts, no cloud.",
+				url: "https://github.com/mirbyte/Daylane",
+				downloadUrl:
+					"https://github.com/mirbyte/Daylane/releases/latest/download/Daylane-win-x64-self-contained.zip",
+				language: "C#",
+				topics: ["windows", "activity-tracker"],
+				isNew: true,
+			},
+			{
 				name: "IconPull",
 				description:
 					"Extract icons from .exe, .dll, .mun, and .ico files. Export Shell-rendered PNG, raw ICO, or embedded PNG.",
