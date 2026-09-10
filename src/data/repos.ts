@@ -26,6 +26,15 @@ export const repoCategories: RepoCategory[] = [
 		title: "Windows tools",
 		repos: [
 			{
+				name: "BraveTweaks",
+				description:
+					"Simple Brave policy manager with an Origin-style preset for Windows. Optional extras for telemetry and hardening.",
+				url: "https://github.com/mirbyte/BraveTweaks",
+				language: "Python",
+				topics: ["windows", "brave"],
+				isNew: true,
+			},
+			{
 				name: "Daylane",
 				description:
 					"Local-only Windows activity tracker. App timeline, idle/away, and key/click counts. No accounts, no cloud.",
