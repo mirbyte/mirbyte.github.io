@@ -19,6 +19,10 @@
 		scroll-behavior: smooth;
 	}
 
+	html.lenis {
+		scroll-behavior: auto;
+	}
+
 	body {
 		@apply bg-canvas font-sans text-ink antialiased;
 	}

@@ -1,0 +1,25 @@
+<script>
+	import Lenis from "lenis";
+	import { isTkinter, type Theme } from "../lib/theme";
+
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	let lenis: Lenis | null = null;
+
+	const start = () => {
+		if (lenis || isTkinter() || reducedMotion.matches) return;
+		lenis = new Lenis({ autoRaf: true, anchors: true, lerp: 0.2 });
+	};
+
+	const stop = () => {
+		lenis?.destroy();
+		lenis = null;
+	};
+
+	start();
+
+	window.addEventListener("themechange", (event) => {
+		const theme = (event as CustomEvent<{ theme: Theme }>).detail.theme;
+		if (theme === "tkinter") stop();
+		else start();
+	});
+</script>
