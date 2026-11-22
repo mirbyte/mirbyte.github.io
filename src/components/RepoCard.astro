@@ -9,7 +9,7 @@ interface Props {
 
 const { repo, index, accent } = Astro.props;
 
-const meta = [repo.language, ...(repo.topics?.slice(0, 2) ?? [])].filter(Boolean);
+const meta = [repo.language].filter(Boolean);
 ---
 
 <article
