@@ -206,6 +206,7 @@ export const repoCategories: RepoCategory[] = [
 				name: "TradingView-Indicators",
 				description: "Pine Script indicators for TradingView.",
 				url: "https://github.com/mirbyte/TradingView-Indicators",
+				language: "Pine Script",
 				topics: ["tradingview", "pine-script"],
 			},
 			{
