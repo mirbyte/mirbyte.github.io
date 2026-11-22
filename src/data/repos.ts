@@ -46,6 +46,20 @@ export const repoCategories: RepoCategory[] = [
 				isNew: true,
 			},
 			{
+				name: "encrypted-messaging-tool",
+				description: "Simple encrypted messaging tool (AES-256) with a Tkinter GUI. Tested on Windows only.",
+				url: "https://github.com/mirbyte/encrypted-messaging-tool",
+				language: "Python",
+			},
+			{
+				name: "file-hash-verifier",
+				description:
+					"Fast hash verification with context menu integration. MD5, SHA-1, SHA-256, SHA-512, and SHA3-256.",
+				url: "https://github.com/mirbyte/file-hash-verifier",
+				language: "Python",
+				topics: ["windows", "context-menu"],
+			},
+			{
 				name: "IconPull",
 				description:
 					"Extract icons from .exe, .dll, .mun, and .ico files. Export Shell-rendered PNG, raw ICO, or embedded PNG.",
@@ -57,12 +71,24 @@ export const repoCategories: RepoCategory[] = [
 				isNew: true,
 			},
 			{
-				name: "file-hash-verifier",
-				description:
-					"Fast hash verification with context menu integration. MD5, SHA-1, SHA-256, SHA-512, and SHA3-256.",
-				url: "https://github.com/mirbyte/file-hash-verifier",
+				name: "network-diagnostics-parody",
+				description: "Satirical Windows troubleshooter that runs a theatrical network scan, then reports no issues. Fixes nothing.",
+				url: "https://github.com/mirbyte/network-diagnostics-parody",
+				language: "C#",
+			},
+			{
+				name: "Phone-Link-Uninstaller",
+				description: "Uninstall Phone Link completely. Tested on Windows 11.",
+				url: "https://github.com/mirbyte/Phone-Link-Uninstaller",
+				language: "PowerShell",
+				topics: ["windows"],
+			},
+			{
+				name: "StreamBlock",
+				description: "Create draggable colored overlay blocks on your screen.",
+				url: "https://github.com/mirbyte/StreamBlock",
 				language: "Python",
-				topics: ["windows", "context-menu"],
+				topics: ["windows", "overlay"],
 			},
 			{
 				name: "VirusTotal-Context-Menu",
@@ -87,40 +113,12 @@ export const repoCategories: RepoCategory[] = [
 				language: "Python",
 				topics: ["windows"],
 			},
-			{
-				name: "Phone-Link-Uninstaller",
-				description: "Uninstall Phone Link completely. Tested on Windows 11.",
-				url: "https://github.com/mirbyte/Phone-Link-Uninstaller",
-				language: "PowerShell",
-				topics: ["windows"],
-			},
-			{
-				name: "StreamBlock",
-				description: "Create draggable colored overlay blocks on your screen.",
-				url: "https://github.com/mirbyte/StreamBlock",
-				language: "Python",
-				topics: ["windows", "overlay"],
-			},
 		],
 	},
 	{
 		id: "scripts",
 		title: "Scripts & automation",
 		repos: [
-			{
-				name: "Simple-File-Management-Scripts",
-				description: "Low-effort file management scripts I use almost daily on Windows.",
-				url: "https://github.com/mirbyte/Simple-File-Management-Scripts",
-				language: "Python",
-				topics: ["python", "files"],
-			},
-			{
-				name: "Android-Archiver",
-				description: "Fast Android file system backups on Windows, kept as simple as possible.",
-				url: "https://github.com/mirbyte/Android-Archiver",
-				language: "Python",
-				topics: ["android", "backup"],
-			},
 			{
 				name: "onetxt",
 				description: "Merge multiple text files into one clean context file for LLMs.",
@@ -129,18 +127,18 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["python", "llm"],
 			},
 			{
-				name: "Text-List-Tools",
-				description: "Generate and modify .txt files in list format. Handy for wordlists and similar.",
-				url: "https://github.com/mirbyte/Text-List-Tools",
-				language: "Python",
-				topics: ["python"],
-			},
-			{
 				name: "portapps-Brave-updater",
 				description: "Update the portable Brave browser from portapps.io.",
 				url: "https://github.com/mirbyte/portapps-Brave-updater",
 				language: "Python",
 				topics: ["portable", "windows"],
+			},
+			{
+				name: "Simple-File-Management-Scripts",
+				description: "Low-effort file management scripts I use almost daily on Windows.",
+				url: "https://github.com/mirbyte/Simple-File-Management-Scripts",
+				language: "Python",
+				topics: ["python", "files"],
 			},
 			{
 				name: "setup-qbittorrent-portable",
@@ -153,6 +151,32 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["portable", "windows"],
 				isNew: true,
 			},
+			{
+				name: "Text-List-Tools",
+				description: "Generate and modify .txt files in list format. Handy for wordlists and similar.",
+				url: "https://github.com/mirbyte/Text-List-Tools",
+				language: "Python",
+				topics: ["python"],
+			},
+		],
+	},
+	{
+		id: "android",
+		title: "Android",
+		repos: [
+			{
+				name: "Android-Archiver",
+				description: "Fast Android file system backups on Windows, kept as simple as possible.",
+				url: "https://github.com/mirbyte/Android-Archiver",
+				language: "Python",
+				topics: ["android", "backup"],
+			},
+			{
+				name: "morphe-patches",
+				description: "Patch bundle for Morphe, an Android app patcher. 23 patches, including Bloomberg support.",
+				url: "https://github.com/mirbyte/morphe-patches",
+				language: "Kotlin",
+			},
 		],
 	},
 	{
@@ -160,18 +184,18 @@ export const repoCategories: RepoCategory[] = [
 		title: "Websites",
 		repos: [
 			{
-				name: "mirbyte.github.io",
-				description: "This site.",
-				url: "https://github.com/mirbyte/mirbyte.github.io",
-				language: "Astro",
-				topics: ["astro", "github-pages"],
-			},
-			{
 				name: "DropGain-website",
 				description: "Website for DropGain.",
 				url: "https://github.com/mirbyte/DropGain-website",
 				language: "Astro",
 				topics: ["astro"],
+			},
+			{
+				name: "mirbyte.github.io",
+				description: "This site: a curated index of my software, built with Astro and hosted on GitHub Pages.",
+				url: "https://github.com/mirbyte/mirbyte.github.io",
+				language: "Astro",
+				topics: ["astro", "github-pages"],
 			},
 		],
 	},
@@ -203,23 +227,16 @@ export const repoCategories: RepoCategory[] = [
 		title: "Markets & trading",
 		repos: [
 			{
-				name: "TradingView-Indicators",
-				description: "Pine Script indicators for TradingView.",
-				url: "https://github.com/mirbyte/TradingView-Indicators",
-				language: "Pine Script",
-				topics: ["tradingview", "pine-script"],
-			},
-			{
-				name: "EMA-Cross-Entry",
-				description: "cTrader cBot.",
-				url: "https://github.com/mirbyte/EMA-Cross-Entry",
+				name: "CCi-Trend-Indicator",
+				description: "cTrader 2-period commodity channel index indicator with signal arrows.",
+				url: "https://github.com/mirbyte/CCi-Trend-Indicator",
 				language: "C#",
 				topics: ["ctrader"],
 			},
 			{
-				name: "CCi-Trend-Indicator",
-				description: "cTrader 2-period commodity channel index indicator with signal arrows.",
-				url: "https://github.com/mirbyte/CCi-Trend-Indicator",
+				name: "EMA-Cross-Entry",
+				description: "EMA crossover cBot for cTrader with volume multipliers, stop loss, take profit, and trailing stop.",
+				url: "https://github.com/mirbyte/EMA-Cross-Entry",
 				language: "C#",
 				topics: ["ctrader"],
 			},
@@ -230,6 +247,13 @@ export const repoCategories: RepoCategory[] = [
 				language: "C#",
 				topics: ["ctrader"],
 			},
+			{
+				name: "TradingView-Indicators",
+				description: "Pine Script indicators for TradingView.",
+				url: "https://github.com/mirbyte/TradingView-Indicators",
+				language: "Pine Script",
+				topics: ["tradingview", "pine-script"],
+			},
 		],
 	},
 ];
@@ -237,6 +261,7 @@ export const repoCategories: RepoCategory[] = [
 export const categoryAccents: Record<string, string> = {
 	windows: "#4db8ff",
 	scripts: "#a78bfa",
+	android: "#a3e635",
 	web: "#34d399",
 	audio: "#f472b6",
 	trading: "#fbbf24",
