@@ -180,6 +180,14 @@
 		color: color-mix(in srgb, var(--category-accent) 18%, var(--color-ink));
 	}
 
+	.category-section {
+		transition: opacity 0.5s ease;
+	}
+
+	.category-section.is-dimmed {
+		opacity: 0.60;
+	}
+
 	.category-section-header h2 {
 		transition: color 0.45s ease;
 	}
@@ -792,6 +800,10 @@
 
 [data-theme="tkinter"] .category-rail-track > * + * {
 	margin-top: 1rem;
+}
+
+[data-theme="tkinter"] .category-section.is-dimmed {
+	opacity: 1;
 }
 
 [data-theme="tkinter"] .category-section {

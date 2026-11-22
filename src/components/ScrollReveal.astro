@@ -59,4 +59,32 @@
 		window.addEventListener("resize", scheduleCategoryUpdate, { passive: true });
 		activateCategory();
 	}
+
+	const fadeSections = () => {
+		const viewport = window.innerHeight;
+		const bandTop = viewport * 0.2;
+		const bandBottom = viewport * 0.8;
+
+		for (const section of sections) {
+			const rect = section.getBoundingClientRect();
+			section.classList.toggle("is-dimmed", rect.bottom <= bandTop || rect.top >= bandBottom);
+		}
+	};
+
+	let fadeTicking = false;
+
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (fadeTicking) return;
+			fadeTicking = true;
+			requestAnimationFrame(() => {
+				fadeSections();
+				fadeTicking = false;
+			});
+		},
+		{ passive: true },
+	);
+	window.addEventListener("resize", fadeSections, { passive: true });
+	fadeSections();
 </script>
