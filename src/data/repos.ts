@@ -129,13 +129,6 @@ export const repoCategories: RepoCategory[] = [
 				topics: ["python", "llm"],
 			},
 			{
-				name: "youtube-whisper-transcriber",
-				description: "Transcribe YouTube videos to text using OpenAI Whisper large-v3.",
-				url: "https://github.com/mirbyte/youtube-whisper-transcriber",
-				language: "Python",
-				topics: ["python", "whisper"],
-			},
-			{
 				name: "Text-List-Tools",
 				description: "Generate and modify .txt files in list format. Handy for wordlists and similar.",
 				url: "https://github.com/mirbyte/Text-List-Tools",
